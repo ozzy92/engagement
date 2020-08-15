@@ -18,4 +18,4 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 // just a test to see if jquery is getting pulled in
-$(document).ready(() => $('body').css('background-color', 'lightblue'));
+//$(document).ready(() => $('body').css('background-color', 'lightblue'));
