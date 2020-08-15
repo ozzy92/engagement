@@ -1,0 +1,216 @@
+<%= render 'home/header' %>
+<h4 class="m-2">New Engagement Request</h4>
+<p class="m-2 pb-2">
+  Use this form to create a new engagement request.
+</p>
+<%= form_with model: @engagement_request, class: 'container-fluid' do |form| %>
+
+  <div class="row">
+    <div class="col-12">
+      <hr>
+      <h5>Contacts</h5>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :requester, class: 'col-2' %>
+    <div class="col-8">
+      <%= render 'contacts/search', form: form %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :subject_expert, class: 'col-2' %>
+    <div class="col-8">
+      <%= render 'contacts/search', form: form %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :sponsor, class: 'col-2' %>
+    <div class="col-8">
+      <%= render 'contacts/search', form: form %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <hr>
+      <h5>Project Definition</h5>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :engagement_type, class: 'col-2' %>
+    <%= form.select :engagement_type, [ [ 'Finger in the Air Estimate', :estimate ] ] %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :project_name, class: 'col-2' %>
+    <%= form.text_field :project_name, class: 'col-8' %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :vision, class: 'col-2' %>
+    <%= form.text_area :vision, class: 'col-8' %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :goal, class: 'col-2' %>
+    <%= form.text_area :goal, class: 'col-8' %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :description, class: 'col-2' %>
+    <%= form.text_area :description, class: 'col-8' %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :scope, class: 'col-2' %>
+    <%= form.text_area :scope, class: 'col-8' %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :advice_required, class: 'col-2' %>
+    <%= form.text_area :advice_required, class: 'col-8' %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :program, class: 'col-2' %>
+    <%= form.select :funding_method,
+                    [
+                        [ 'Project Alpha', :alpha ],
+                        [ 'Fortune 500 Client', :fortune_500 ],
+                        [ 'Tech & Ops Support', :support ],
+                        [ 'Mobile (Android)', :android ],
+                        [ 'Mobile (iOS)', :ios ],
+                        [ 'Marketing Slush Fund', :marketing ]
+                    ], { include_blank: true }
+    %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :impacted_projects, class: 'col-2' %>
+    <%= form.select :impacted_projects,
+                    [
+                        [ 'Project Alpha', :alpha ],
+                        [ 'Codename Zebra', :fortune_500 ],
+                        [ 'Mobile (Android)', :android ],
+                        [ 'Mobile (iOS)', :ios ],
+                        [ 'Marketing Slush Fund', :marketing ]
+                    ],
+                    { :include_blank => true },
+                    { :multiple => true }
+    %>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <hr>
+      <h5>Funding</h5>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :funding_method, class: 'col-2' %>
+    <%= form.select :funding_method,
+        [
+          [ 'Client Project', :client ],
+          [ 'Internal Initiative', :initiative ],
+          [ 'Operations Budget', :operations ]
+        ], { include_blank: true }
+    %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :cost_center, class: 'col-2' %>
+    <%= form.text_field :cost_center, class: 'col-4' %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :funding_status, class: 'col-2' %>
+    <%= form.select :funding_status,
+                    [
+                        [ 'Request Initiated', :requested ],
+                        [ 'Pending Approval', :pending_approval ],
+                        [ 'Fully Approved', :approved ],
+                        [ 'Budget Appropriated', :budget ]
+                    ], { include_blank: true }
+    %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :budget_allocated, class: 'col-2' %>
+    <%= form.number_field :budget_allocated, class: 'col-2' %>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <hr>
+      <h5>Time to Market</h5>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :priority, class: 'col-2' %>
+    <%= form.select :priority,
+                    [
+                        [ 'High', 0 ],
+                        [ 'Medium', 1 ],
+                        [ 'Low', 2 ]
+                    ], { include_blank: true }
+    %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :start_date, class: 'col-2' %>
+    <div class="col-4 px-0">
+      <%= form.date_select :start_date, class: 'col-2' %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :end_date, class: 'col-2' %>
+    <div class="col-4 px-0">
+      <%= form.date_select :end_date, class: 'col-2' %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :risk_rating, class: 'col-2' %>
+    <%= form.select :risk_rating,
+                    [
+                        [ 'High', 0 ],
+                        [ 'Medium', 1 ],
+                        [ 'Low', 2 ]
+                    ], { include_blank: true }
+    %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :risks, class: 'col-2' %>
+    <%= form.text_area :risks, class: 'col-8' %>
+  </div>
+
+
+  <div class="row mb-2">
+    <%= form.label :projected_revenue, class: 'col-2' %>
+    <%= form.number_field :projected_revenue, class: 'col-2' %>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <hr>
+      <h5>Validations Summary</h5>
+      <p>Validations will appear here when you submit the form.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-10 pr-0">
+      <div class="float-right mb-5">
+        <%= form.submit 'Create' %>
+      </div>
+    </div>
+  </div>
+<% end %>

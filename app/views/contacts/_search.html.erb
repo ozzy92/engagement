@@ -1,0 +1,13 @@
+<div class="container px-0">
+  <div class="row pb-2">
+    <div class="col-1 px-0 mr-2">First</div>
+    <%= form.text_field :first_name, class: 'col-3 mr-2', disabled: 'true' %>
+    <div class="col-1 px-0 mr-2">Last</div>
+    <%= form.text_field :last_name, class: 'col-3 mr-2', disabled: 'true' %>
+    <div class="col-2 px-0 mr-2"><button>Search</button></div>
+  </div>
+  <div class="row">
+    <div class="col-1 px-0 mr-2">E-Mail</div>
+    <%= form.text_field :email, class: 'col-5', disabled: 'true' %>
+  </div>
+</div>

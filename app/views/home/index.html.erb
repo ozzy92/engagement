@@ -1,62 +1,12 @@
-<header class="container-fluid py-2 bg-primary text-light">
-  <div class="row">
-    <h3 class="col-10 text-center">
-      Jay Crowley Engagement Request Process
-    </h3>
-    <small class="col-2 text-right">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#whatIsThisModal">What is This?</button>
-    </small>
-  </div>
-</header>
-<div class="modal fade" id="whatIsThisModal" tabindex="-1" role="dialog" aria-labelledby="#whatIsThisModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="whatIsThisModalLabel">What is This?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>
-          I work in a very large organization in the tech department.
-          As with many very large organizations, there is a bit of bureaucracy.
-          This web app is roughly based on an actual form in the organization for requesting
-          technical help with new projects.
-        </p>
-        <p>
-          I've been there a long time, and have touched many things, so I often get
-          requests out of the blue, from random places in the organization.
-          I was joking with colleagues about implementing a request form for myself,
-          similar to the forms found for other departments, and this site was born.
-        </p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<nav class="navbar navbar-expand-sm navbar-light border-bottom">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Request Status</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+<%= render 'header' %>
 <h4 class="m-2">Create a New Engagement Request</h4>
+<p class="m-2 pb-2">
+  You have a new project idea, and you need help.  Here's how to engage Jay Crowley for expert project management advise.
+</p>
 <div class="container-fluid">
   <div class="row my-2">
     <div class="col-sm-2">
-      <button class="btn btn-primary btn-lg btn-block">Finger in the Air Estimation</button>
+      <%= link_to 'Finger in the Air Estimation', new_engagement_request_path, class: 'btn btn-primary btn-lg btn-block' %>
     </div>
     <div class="col-sm-10">
       Request a rough estimation for a project idea that you had a dream about last night.  You aren't sure what it means.
@@ -65,7 +15,7 @@
   </div>
   <div class="row my-2">
     <div class="col-sm-2">
-      <button class="btn btn-success btn-lg btn-block">Detailed Project Estimates</button>
+      <%= link_to 'Detailed Project Estimates', new_engagement_request_path, class: 'btn btn-success btn-lg btn-block' %>
     </div>
     <div class="col-sm-10">
       After you have ignored the finger in the air estimate, and raised money, use this.
@@ -74,7 +24,7 @@
   </div>
   <div class="row my-2">
     <div class="col-sm-2">
-      <button class="btn btn-warning btn-lg btn-block">Resource Scheduling</button>
+      <%= link_to 'Resource Scheduling', new_engagement_request_path, class: 'btn btn-warning btn-lg btn-block' %>
     </div>
     <div class="col-sm-10">
       If you have managed to make it past the first two estimate steps, feel free to schedule time to do your work.
@@ -84,7 +34,7 @@
   </div>
   <div class="row my-2">
     <div class="col-sm-2">
-      <button class="btn btn-danger btn-lg btn-block">Problem Rescue</button>
+      <%= link_to 'Problem Rescue', new_engagement_request_path, class: 'btn btn-danger btn-lg btn-block' %>
     </div>
     <div class="col-sm-10">
       You've gone ahead and tried to do it yourself.  You are stuck.  You need my expertise to get out of a bind.
