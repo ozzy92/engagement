@@ -1,0 +1,37 @@
+<%= render 'home/header' %>
+<h4 class="m-2">Departments</h4>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2 font-weight-bold">Name</div>
+    <div class="col-4 font-weight-bold">Description</div>
+    <div class="col-2 font-weight-bold">Cost Center</div>
+    <div class="col-2 font-weight-bold">Actions</div>
+  </div>
+</div>
+<% def render_department(department) %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-2"><%= department.name %></div>
+      <div class="col-4"><%= department.description %></div>
+      <div class="col-2"><%= department.cost_center %></div>
+      <div class="col-4">
+        <%= link_to 'Edit', edit_department_path(department), class: 'btn btn-success' unless department.id == 1 %>
+        <%= link_to 'Create Sub-Department',
+                    new_department_path + '?parent_department_id=' + department.id.to_s,
+                    class: 'btn btn-success'
+        %>
+      </div>
+    </div>
+    <% if department.child_departments.any? %>
+      <div class="row">
+        <div class="col-12">
+          <% department.child_departments.each do |child_department| %>
+            <%= render_department(child_department) %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<%  nil %>
+<% end %>
+<%= render_department(@department) %>

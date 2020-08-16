@@ -1,0 +1,36 @@
+<%= form_with model: @department, class: 'container-fluid' do |form| %>
+
+  <div class="row mb-2">
+    <%= form.label :name, class: 'col-2' %>
+    <%= form.text_field :name, class: 'col-8' %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :description, class: 'col-2' %>
+    <%= form.text_field :description, class: 'col-8' %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :parent_department_id, class: 'col-2' %>
+    <%= form.select :parent_department_id,
+                    options_for_select(@departments.collect { |department| [ department.name, department.id ] },
+                                       params[:parent_department_id]) %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :cost_center, class: 'col-2' %>
+    <div class="col-8 p-0">
+      <%= form.text_field :cost_center, id: 'cost_center', readonly: true %>
+      <%= button_tag 'Generate', type: 'button', onclick: 'generate_cost_center()' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-10 pr-0">
+      <div class="float-right mb-5">
+        <%= form.submit %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

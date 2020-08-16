@@ -62,9 +62,7 @@
         %>
       </li>
       <li class="nav-item">
-        <%=
-          link_to 'New Request', new_engagement_request_path, class: nav_class('/engagement_requests/new')
-        %>
+        <%= link_to 'New Request', new_engagement_request_path, class: nav_class('/engagement_requests/new') %>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Request Status</a>
@@ -73,7 +71,7 @@
         <a class="nav-link" href="#">Employee Directory</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Financial Hierarchy</a>
+        <%= link_to 'Financial Hierarchy', departments_path, class: nav_class('/departments') %>
       </li>
     </ul>
   </div>
