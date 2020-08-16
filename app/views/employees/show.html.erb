@@ -1,0 +1,45 @@
+<%= render 'home/header' %>
+<div class="container-fluid m-2 text-center">
+  <div class="row">
+    <h4 class="col-6"><%= @employee.first_name %> <%= @employee.last_name %></h4>
+  </div>
+  <div class="row">
+    <h5 class="col-6"><%= @employee.title.name %>, <%= @employee.job.name %></h5>
+  </div>
+  <div class="row">
+    <div class="col-3 text-right">
+      Organization:
+    </div>
+    <div class="col-3 text-left">
+      <%= @employee.department.name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3 text-right">
+      Cost Center:
+    </div>
+    <div class="col-3 text-left">
+      <%= @employee.department.cost_center %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3 text-right">
+      Location:
+    </div>
+    <div class="col-3 text-left">
+      <%= @employee.office.street %>
+      <br>
+      <%= @employee.office.city %><%= ', ' + @employee.office.state if @employee.office.state %>
+      <br>
+      <%= @employee.office.country %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3 text-right">
+      Mail Code:
+    </div>
+    <div class="col-3 text-left">
+      <%= @employee.office.mail_code %>
+    </div>
+  </div>
+</div>

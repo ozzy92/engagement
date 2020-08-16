@@ -1,5 +1,5 @@
 <%= render 'home/header' %>
-<h4 class="m-2">Departments</h4>
+<h4 class="m-2">Organization Hierarchy</h4>
 <div class="container-fluid">
   <div class="row">
     <div class="col-2 font-weight-bold">Name</div>
@@ -10,7 +10,7 @@
 </div>
 <% def render_department(department) %>
   <div class="container-fluid">
-    <div class="row">
+    <div class="row my-1">
       <div class="col-2"><%= department.name %></div>
       <div class="col-4"><%= department.description %></div>
       <div class="col-2"><%= department.cost_center %></div>
@@ -35,3 +35,4 @@
 <%  nil %>
 <% end %>
 <%= render_department(@department) %>
+<%= link_to 'Generate Seed Code', { :format => :text }, class: 'btn btn-success m-2' %>

@@ -1,0 +1,36 @@
+<%= render 'home/header' %>
+<div class="container-fluid">
+  <div class="row my-2">
+    <h4 class="col-6">Employee Directory</h4>
+    <div class="col-6 text-right">
+      <%= form_for :filter do |form| %>
+        <% form.label :filter %>
+        <% form.text_field :filter, id: 'filter_input' %>
+      <% end %>
+      <script type="text/javascript">
+        // this is a giant failure, none of the blogs i read work with rails 6!
+        // TODO: giving up for now, and leaving the mess here to come back to
+          const filter = $('#filter_input');
+
+          console.log('Found filter: ');
+          console.log(filter);
+          filter.on( 'input', function() {
+              console.log('Fire!');
+              Rails.fire(form, 'submit');
+          });
+      </script>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2 font-weight-bold">First Name</div>
+    <div class="col-2 font-weight-bold">Last Name</div>
+    <div class="col-3 font-weight-bold">Email</div>
+    <div class="col-3 font-weight-bold">Position</div>
+    <div class="col-2"></div>
+  </div>
+</div>
+<div id="employee_list" class="container-fluid">
+  <%= render 'employees', employees: @employees %>
+</div>

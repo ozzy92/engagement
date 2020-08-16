@@ -1,0 +1,9 @@
+<% def render_department(department) # this generates code for the seed file, spacing intentionally compact! %>
+department<%= department.id %> = Department.create(name: '<%= department.name %>',
+                                description: '<%= department.description %>',
+                                cost_center: '<%= department.cost_center %>',
+                                parent_department_id: <%= (department.parent_department && 'department' + department.parent_department.id.to_s + '.id') || 'nil' %>)
+    <% if department.child_departments.any? %>
+      <% department.child_departments.each do |child_department| %>
+<%= render_department(child_department) %><% end %><% end %><% nil %><% end %>
+<%= render_department(@department) %>

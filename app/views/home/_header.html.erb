@@ -58,20 +58,21 @@
             end
           end
 
-          link_to "Home", root_path, class: nav_class('/')
+          link_to "Home", root_path, class: nav_class(root_path)
         %>
       </li>
       <li class="nav-item">
-        <%= link_to 'New Request', new_engagement_request_path, class: nav_class('/engagement_requests/new') %>
+        <%= link_to 'New Request', new_engagement_request_path, class: nav_class(new_engagement_request_path) %>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Request Status</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Employee Directory</a>
+        <%= link_to 'Employee Directory', employees_path, class: nav_class(employees_path) %>
+        <a class="nav-link" href="#"></a>
       </li>
       <li class="nav-item">
-        <%= link_to 'Financial Hierarchy', departments_path, class: nav_class('/departments') %>
+        <%= link_to 'Organization Hierarchy', departments_path, class: nav_class(departments_path) %>
       </li>
     </ul>
   </div>

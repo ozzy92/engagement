@@ -1,0 +1,11 @@
+<% employees.each do |employee| %>
+  <div class="row">
+    <div class="col-2"><%= employee.first_name %></div>
+      <div class="col-2"><%= employee.last_name %></div>
+      <div class="col-3"><%= employee.email %></div>
+      <div class="col-3"><%= employee.title.name %>, <%= employee.job.name %></div>
+      <div class="col-2">
+        <%= link_to 'View', employee_path(employee) %>
+      </div>
+  </div>
+<% end %>
