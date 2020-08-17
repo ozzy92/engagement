@@ -1,0 +1,223 @@
+<%= form_with model: @engagement_request, class: 'container-fluid' do |form| %>
+
+  <% if @engagement_request.engagement_id %>
+
+    <div class="row">
+      <div class="col-2">Id</div>
+      <div class="col-8">
+        <%= @engagement_request.engagement_id %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">Status</div>
+      <div class="col-8">
+        <%= @engagement_request.status %>
+      </div>
+    </div>
+
+  <% end %>
+
+  <div class="row">
+    <div class="col-12">
+      <hr>
+      <h5>Contacts</h5>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :requester, class: 'col-2' %>
+    <div class="col-8">
+      <%= render 'contacts/search', form: form %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :subject_expert, class: 'col-2' %>
+    <div class="col-8">
+      <%= render 'contacts/search', form: form %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :sponsor, class: 'col-2' %>
+    <div class="col-8">
+      <%= render 'contacts/search', form: form %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <hr>
+      <h5>Project Definition</h5>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :engagement_type, class: 'col-2' %>
+    <%= form.select :engagement_type,
+                    options_for_select([
+                       [ 'Finger in the Air Estimate', :finger_estimate ],
+                       [ 'Detailed Project Estimate', :detailed_estimate ],
+                       [ 'Resource Scheduling', :scheduling ],
+                       [ 'Project Rescue', :rescue ],
+                    ], params[:engagement_type] || 0) %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :project_name, class: 'col-2' %>
+    <%= form.text_field :project_name, class: 'col-8' %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :vision, class: 'col-2' %>
+    <%= form.text_area :vision, class: 'col-8' %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :goal, class: 'col-2' %>
+    <%= form.text_area :goal, class: 'col-8' %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :description, class: 'col-2' %>
+    <%= form.text_area :description, class: 'col-8' %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :scope, class: 'col-2' %>
+    <%= form.text_area :scope, class: 'col-8' %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :advice_required, class: 'col-2' %>
+    <%= form.text_area :advice_required, class: 'col-8' %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :program_id, class: 'col-2' %>
+    <%= form.select :program_id, @programs.collect { |program| [ program.name, program.id ] }, { include_blank: true } %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :train_id, class: 'col-2' %>
+    <%= form.select :train_id, @trains.collect { |train| [ train.name, train.id ] }, { include_blank: true } %>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <hr>
+      <h5>Funding</h5>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :funding_method, class: 'col-2' %>
+    <%= form.select :funding_method,
+        [
+          [ 'Client Project', :client ],
+          [ 'Internal Initiative', :initiative ],
+          [ 'Operations Budget', :operations ]
+        ], { include_blank: true }
+    %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :cost_center, class: 'col-2' %>
+    <%= form.text_field :cost_center, class: 'col-4' %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :funding_status, class: 'col-2' %>
+    <%= form.select :funding_status,
+                    [
+                        [ 'Request Initiated', :requested ],
+                        [ 'Pending Approval', :pending_approval ],
+                        [ 'Fully Approved', :approved ],
+                        [ 'Budget Appropriated', :budget ]
+                    ], { include_blank: true }
+    %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :budget_allocated, class: 'col-2' %>
+    <%= form.number_field :budget_allocated, class: 'col-2' %>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <hr>
+      <h5>Time to Market</h5>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :priority, class: 'col-2' %>
+    <%= form.select :priority,
+                    [
+                        [ 'High', 0 ],
+                        [ 'Medium', 1 ],
+                        [ 'Low', 2 ]
+                    ], { include_blank: true }
+    %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :start_date, class: 'col-2' %>
+    <div class="col-4 px-0">
+      <%= form.date_select :start_date, class: 'col-2' %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :end_date, class: 'col-2' %>
+    <div class="col-4 px-0">
+      <%= form.date_select :end_date, class: 'col-2' %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :risk_rating, class: 'col-2' %>
+    <%= form.select :risk_rating,
+                    [
+                        [ 'High', 0 ],
+                        [ 'Medium', 1 ],
+                        [ 'Low', 2 ]
+                    ], { include_blank: true }
+    %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :risks, class: 'col-2' %>
+    <%= form.text_area :risks, class: 'col-8' %>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :projected_revenue, class: 'col-2' %>
+    <%= form.number_field :projected_revenue, class: 'col-2' %>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <hr>
+      <h5>Validations Summary</h5>
+      <% if @engagement_request.validations %>
+        <ul>
+          <% @engagement_request.validations.split('|').each do |validation| %>
+            <li><%= validation %></li>
+          <% end %>
+        </ul>
+      <% elsif @engagement_request.status.nil? %>
+        <p>Validations will appear here when you submit the form.</p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-10 pr-0">
+      <div class="float-right mb-5">
+        <%= form.submit %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -6,7 +6,7 @@
 <div class="container-fluid">
   <div class="row my-2">
     <div class="col-sm-2">
-      <%= link_to 'Finger in the Air Estimation', new_engagement_request_path, class: 'btn btn-primary btn-lg btn-block' %>
+      <%= link_to 'Finger in the Air Estimation', new_engagement_request_path + '?engagement_type=finger_estimate', class: 'btn btn-primary btn-lg btn-block' %>
     </div>
     <div class="col-sm-10">
       Request a rough estimation for a project idea that you had a dream about last night.  You aren't sure what it means.
@@ -15,7 +15,7 @@
   </div>
   <div class="row my-2">
     <div class="col-sm-2">
-      <%= link_to 'Detailed Project Estimates', new_engagement_request_path, class: 'btn btn-success btn-lg btn-block' %>
+      <%= link_to 'Detailed Project Estimates', new_engagement_request_path + '?engagement_type=detailed_estimate', class: 'btn btn-success btn-lg btn-block' %>
     </div>
     <div class="col-sm-10">
       After you have ignored the finger in the air estimate, and raised money, use this.
@@ -24,7 +24,7 @@
   </div>
   <div class="row my-2">
     <div class="col-sm-2">
-      <%= link_to 'Resource Scheduling', new_engagement_request_path, class: 'btn btn-warning btn-lg btn-block' %>
+      <%= link_to 'Resource Scheduling', new_engagement_request_path + '?engagement_type=scheduling', class: 'btn btn-warning btn-lg btn-block' %>
     </div>
     <div class="col-sm-10">
       If you have managed to make it past the first two estimate steps, feel free to schedule time to do your work.
@@ -34,7 +34,7 @@
   </div>
   <div class="row my-2">
     <div class="col-sm-2">
-      <%= link_to 'Problem Rescue', new_engagement_request_path, class: 'btn btn-danger btn-lg btn-block' %>
+      <%= link_to 'Problem Rescue', new_engagement_request_path + '?engagement_type=rescue', class: 'btn btn-danger btn-lg btn-block' %>
     </div>
     <div class="col-sm-10">
       You've gone ahead and tried to do it yourself.  You are stuck.  You need my expertise to get out of a bind.

@@ -1,0 +1,36 @@
+<%= render 'home/header' %>
+<h4 class="m-2">Engagement Requests</h4>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2 font-weight-bold">Id</div>
+    <div class="col-2 font-weight-bold">Name</div>
+    <div class="col-2 font-weight-bold">Type</div>
+    <div class="col-2 font-weight-bold">Status</div>
+    <div class="col-2 font-weight-bold">Actions</div>
+  </div>
+  <% @engagement_requests.each do |engagement| %>
+    <div class="container-fluid">
+      <div class="row my-1">
+        <div class="col-2"><%= engagement.engagement_id %></div>
+        <div class="col-2"><%= engagement.project_name %></div>
+        <div class="col-2">
+          <%= engagement.engagement_type %>
+          <%= # hmmmm this doesn't work... enum attempt failed :(
+            case engagement.engagement_type
+            when :finger_estimate
+              "Finger in the Air Estimate"
+            when :detailed_estimate
+              "Detailed Estimated"
+            when :scheduling
+              "Resource Scheduling"
+            else #:rescue
+              "Problem Rescue"
+            end
+          %>
+        </div>
+        <div class="col-2"><%= engagement.status %></div>
+        <div class="col-2"><%= link_to 'View', engagement %></div>
+      </div>
+    </div>
+  <% end %>
+</div>

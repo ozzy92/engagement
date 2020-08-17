@@ -265,3 +265,40 @@ end
 celebrities.each do |celebrity|
   make_employee(celebrity, other_titles.sample, other_jobs.sample, other_departments.sample)
 end
+
+
+# generate programs, projects, and trains. these are just made up!
+[
+  'Fortune 500 Clients',
+  'Consumer Retail',
+  'Research Initiatives',
+  'Program Alpha',
+  'Manufacturing Efficiency',
+  'Operations Streamlining'
+].each do |program|
+  Program.create(name: program)
+end
+
+[
+  'Chip Manufacturing',
+  'Platform as a Service',
+  'Tech & Ops Helpdesk',
+  'Mobile (Android)',
+  'Mobile (iOS)',
+  'Marketing Campaigns',
+  'Project Hippopotamus',
+].each do |project|
+  Project.create(name: project)
+end
+
+[
+  'Operations',
+  'Manufacturing',
+  'Research',
+  'Sales',
+  'Project Zero',
+  'Marketing',
+  'Lions Team',
+].each do |train|
+  Train.create(name: train)
+end

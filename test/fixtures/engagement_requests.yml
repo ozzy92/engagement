@@ -1,0 +1,51 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  engagement_type: 1
+  project_name: MyString
+  status: 1
+  employee: one
+  vision: MyString
+  goal: MyString
+  description: MyString
+  scope: MyString
+  advice_required: MyString
+  program: one
+  train: one
+  impacted_projects: one
+  funding_method: 1
+  cost_center: MyString
+  funding_status: 1
+  budget_allocated: 9.99
+  priority: 1
+  start_date: 2020-08-16
+  end_date: 2020-08-16
+  risk_rating: 1
+  risks: MyString
+  projected_revenue: 9.99
+  validations: MyString
+
+two:
+  engagement_type: 1
+  project_name: MyString
+  status: 1
+  employee: two
+  vision: MyString
+  goal: MyString
+  description: MyString
+  scope: MyString
+  advice_required: MyString
+  program: two
+  train: two
+  impacted_projects: two
+  funding_method: 1
+  cost_center: MyString
+  funding_status: 1
+  budget_allocated: 9.99
+  priority: 1
+  start_date: 2020-08-16
+  end_date: 2020-08-16
+  risk_rating: 1
+  risks: MyString
+  projected_revenue: 9.99
+  validations: MyString

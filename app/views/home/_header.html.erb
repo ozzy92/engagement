@@ -65,11 +65,10 @@
         <%= link_to 'New Request', new_engagement_request_path, class: nav_class(new_engagement_request_path) %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Request Status</a>
+        <%= link_to 'Request Status', engagement_requests_path, class: nav_class(engagement_requests_path) %>
       </li>
       <li class="nav-item">
         <%= link_to 'Employee Directory', employees_path, class: nav_class(employees_path) %>
-        <a class="nav-link" href="#"></a>
       </li>
       <li class="nav-item">
         <%= link_to 'Organization Hierarchy', departments_path, class: nav_class(departments_path) %>

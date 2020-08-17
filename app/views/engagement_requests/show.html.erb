@@ -1,0 +1,173 @@
+<%= render 'home/header' %>
+<h4 class="m-2">View Engagement Request</h4>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2">Id</div>
+    <div class="col-8"><%= @engagement_request.engagement_id %></div>
+  </div>
+  <div class="row">
+    <div class="col-2">Status</div>
+    <div class="col-8"><%= @engagement_request.status %></div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <hr>
+      <h5>Contacts</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">Requester</div>
+    <div class="col-8">
+      <% if @engagement_request.requester %>
+      <%= @engagement_request.requester.first_name %> <%= @engagement_request.requester.last_name %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">Subject Expert</div>
+    <div class="col-8">
+      <% if @engagement_request.subject_expert %>
+        <%= @engagement_request.subject_expert.first_name %> <%= @engagement_request.subject_expert.last_name %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">Sponsor</div>
+    <div class="col-8">
+      <% if @engagement_request.sponsor %>
+        <%= @engagement_request.subject_expert.first_name %> <%= @engagement_request.subject_expert.last_name %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <hr>
+      <h5>Project Definition</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">Engagement Type</div>
+    <div class="col-8"><%= @engagement_request.engagement_type %></div>
+  </div>
+  <div class="row">
+    <div class="col-2">Project Name</div>
+    <div class="col-8"><%= @engagement_request.project_name %></div>
+  </div>
+  <div class="row">
+    <div class="col-2">Project Name</div>
+    <div class="col-8"><%= @engagement_request.vision %></div>
+  </div>
+  <div class="row">
+    <div class="col-2">Goal</div>
+    <div class="col-8"><%= @engagement_request.goal %></div>
+  </div>
+  <div class="row">
+    <div class="col-2">Description</div>
+    <div class="col-8"><%= @engagement_request.description %></div>
+  </div>
+  <div class="row">
+    <div class="col-2">Scope</div>
+    <div class="col-8"><%= @engagement_request.scope %></div>
+  </div>
+  <div class="row">
+    <div class="col-2">Advise Required</div>
+    <div class="col-8"><%= @engagement_request.advice_required %></div>
+  </div>
+  <div class="row">
+    <div class="col-2">Advise Required</div>
+    <div class="col-8"><%= @engagement_request.advice_required %></div>
+  </div>
+  <div class="row">
+    <div class="col-2">Program</div>
+    <div class="col-8"><%= @engagement_request.program && @engagement_request.program.name %></div>
+  </div>
+  <div class="row">
+    <div class="col-2">Train</div>
+    <div class="col-8"><%= @engagement_request.train && @engagement_request.train.name %></div>
+  </div>
+  <div class="row">
+    <div class="col-2">Impacted Projects</div>
+    <div class="col-8">
+      <%= @engagement_request.projects.collect { |project| project.name }.join(', ') %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <hr>
+      <h5>Funding</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">Funding Method</div>
+    <div class="col-8"><%= @engagement_request.funding_method %></div>
+  </div>
+  <div class="row">
+    <div class="col-2">Cost Center</div>
+    <div class="col-8"><%= @engagement_request.cost_center %></div>
+  </div>
+  <div class="row">
+    <div class="col-2">Funding Status</div>
+    <div class="col-8"><%= @engagement_request.funding_status %></div>
+  </div>
+  <div class="row">
+    <div class="col-2">Budget Allocated</div>
+    <div class="col-8"><%= @engagement_request.budget_allocated %></div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <hr>
+      <h5>Time to Market</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">Priority</div>
+    <div class="col-8"><%= @engagement_request.priority %></div>
+  </div>
+  <div class="row">
+    <div class="col-2">Start Date</div>
+    <div class="col-8"><%= @engagement_request.start_date %></div>
+  </div>
+  <div class="row">
+    <div class="col-2">End Date</div>
+    <div class="col-8"><%= @engagement_request.end_date %></div>
+  </div>
+  <div class="row">
+    <div class="col-2">Risk Rating</div>
+    <div class="col-8"><%= @engagement_request.risk_rating %></div>
+  </div>
+  <div class="row">
+    <div class="col-2">Risks</div>
+    <div class="col-8"><%= @engagement_request.risks %></div>
+  </div>
+  <div class="row">
+    <div class="col-2">Projected Revenue</div>
+    <div class="col-8"><%= @engagement_request.projected_revenue %></div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <hr>
+      <h5>Validations Summary</h5>
+    </div>
+  </div>
+  <% if @engagement_request.validations
+       @engagement_request.validations.split('|').each do |validation|
+  %>
+    <div class="row">
+      <div class="col-12"><%= validation %></div>
+    </div>
+  <%   end
+     end
+  %>
+
+  <div class="row">
+    <div class="col-10 pr-0">
+      <div class="float-right mb-5">
+        <%= link_to 'Edit', edit_engagement_request_path(@engagement_request), class: 'btn btn-success' %>
+      </div>
+    </div>
+  </div>
+</div>
