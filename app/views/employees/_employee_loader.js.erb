@@ -1,0 +1,8 @@
+console.log('hello!')
+{
+    const results = document.querySelector('#employee_list');
+    console.log('You rendered!');
+    const rendered = "<%= escape_javascript(render 'employee_list', actions: @actions) %>";
+    console.log(rendered);
+    results.innerHTML = rendered;
+}

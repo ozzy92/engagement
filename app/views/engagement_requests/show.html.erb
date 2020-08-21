@@ -19,7 +19,10 @@
     <div class="col-2">Requester</div>
     <div class="col-8">
       <% if @engagement_request.requester %>
-      <%= @engagement_request.requester.first_name %> <%= @engagement_request.requester.last_name %>
+        <%= @engagement_request.requester.first_name %>
+        <%= @engagement_request.requester.last_name %>,
+        <%= @engagement_request.requester.title.name %>,
+        <%= @engagement_request.requester.job.name %>
       <% end %>
     </div>
   </div>
@@ -27,7 +30,10 @@
     <div class="col-2">Subject Expert</div>
     <div class="col-8">
       <% if @engagement_request.subject_expert %>
-        <%= @engagement_request.subject_expert.first_name %> <%= @engagement_request.subject_expert.last_name %>
+        <%= @engagement_request.subject_expert.first_name %>
+        <%= @engagement_request.subject_expert.last_name %>,
+        <%= @engagement_request.subject_expert.title.name %>,
+        <%= @engagement_request.subject_expert.job.name %>
       <% end %>
     </div>
   </div>
@@ -35,7 +41,10 @@
     <div class="col-2">Sponsor</div>
     <div class="col-8">
       <% if @engagement_request.sponsor %>
-        <%= @engagement_request.subject_expert.first_name %> <%= @engagement_request.subject_expert.last_name %>
+        <%= @engagement_request.sponsor.first_name %>
+        <%= @engagement_request.sponsor.last_name %>,
+        <%= @engagement_request.sponsor.title.name %>,
+        <%= @engagement_request.sponsor.job.name %>
       <% end %>
     </div>
   </div>
@@ -153,15 +162,17 @@
       <h5>Validations Summary</h5>
     </div>
   </div>
-  <% if @engagement_request.validations
-       @engagement_request.validations.split('|').each do |validation|
-  %>
+  <% if @engagement_request.validations %>
     <div class="row">
-      <div class="col-12"><%= validation %></div>
+      <div class="col-12">
+        <ul class="text-danger">
+          <% @engagement_request.validations.split('|').each do |validation| %>
+            <li><%= validation %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
-  <%   end
-     end
-  %>
+  <% end %>
 
   <div class="row">
     <div class="col-10 pr-0">

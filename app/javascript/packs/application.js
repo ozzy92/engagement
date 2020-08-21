@@ -25,9 +25,13 @@ window.$ = jQuery
 //$(document).ready(() => $('body').css('background-color', 'lightblue'));
 
 
-// the above docs are fairly useless, since I don't know how webpack works
+// the above comments are fairly useless, since I don't know how webpack works
 // this doesn't make any sense, but I found this method here....
 // https://dev.to/morinoko/adding-custom-javascript-in-rails-6-1ke6
-// this doesn't seem like a great way to do things, there must be a better way
+// this doesn't seem like a great way to do things, there must be a better way I'm missing
 import generate_cost_center from "./department_cost_center";
-window.generate_cost_center = generate_cost_center
+window.generate_cost_center = generate_cost_center;
+import { showEmployeeSearch, selectEmployee, clearEmployee } from "../custom/employee_search";
+window.showEmployeeSearch = showEmployeeSearch;
+window.selectEmployee = selectEmployee;
+window.clearEmployee = clearEmployee;

@@ -15,6 +15,7 @@ class EngagementRequestsController < ApplicationController
     @programs = Program.all
     @projects = Project.all
     @trains = Train.all
+    @employees = Employee.all
   end
 
   def edit
@@ -23,6 +24,7 @@ class EngagementRequestsController < ApplicationController
     @programs = Program.all
     @projects = Project.all
     @trains = Train.all
+    @employees = Employee.all
   end
 
   # In theory, the UI let's this always succeed (I suppose someone could post bad foreign keys)
@@ -55,7 +57,7 @@ class EngagementRequestsController < ApplicationController
     def engagement_request_params
       params.require(:engagement_request).permit(
           :engagement_type, :project_name,
-          :requester_id, :subject_expert, :sponsor_id,
+          :requester_id, :subject_expert_id, :sponsor_id,
           :vision, :goal, :description, :scope, :advice_required,
           :program_id, :train_id, :project_ids,
           :funding_method, :cost_center, :funding_status, :budget_allocated,

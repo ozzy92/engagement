@@ -1,0 +1,19 @@
+<%= form.fields_for employee_field, employee do |employee_form| %>
+  <div class="container px-0">
+    <div class="row pb-2">
+      <div class="col-1 px-0 mr-2">First</div>
+      <%= form.hidden_field employee_field.to_s + '_id', id: employee_field.to_s + '_id' %>
+      <%= employee_form.text_field :first_name, class: 'col-3 mr-2', disabled: 'true', id: employee_field.to_s + '_first_name' %>
+      <div class="col-1 px-0 mr-2">Last</div>
+      <%= employee_form.text_field :last_name, class: 'col-3 mr-2', disabled: 'true', id: employee_field.to_s + '_last_name' %>
+    </div>
+    <div class="row">
+      <div class="col-1 px-0 mr-2">E-Mail</div>
+      <%= employee_form.text_field :email, class: 'col-5 mr-2', disabled: 'true', id: employee_field.to_s + '_email' %>
+      <%= button_tag "Search", type: 'button', class: 'col-2 px-0 mr-2',
+                     onclick: "showEmployeeSearch('" + employee_field.to_s + "', '" + title + "');" %>
+      <%= button_tag "Clear", type: 'button', class: 'col-2 px-0 mr-2',
+                     onclick: "clearEmployee('" + employee_field.to_s + "');" %>
+    </div>
+  </div>
+<% end %>

@@ -28,21 +28,27 @@
   <div class="row mb-2">
     <%= form.label :requester, class: 'col-2' %>
     <div class="col-8">
-      <%= render 'contacts/search', form: form %>
+      <%= render 'employees/employee_selector', form: form,
+                 employee_field: :requester, employee: @engagement_request.requester,
+                 title: 'Select Requester' %>
     </div>
   </div>
 
   <div class="row mb-2">
     <%= form.label :subject_expert, class: 'col-2' %>
     <div class="col-8">
-      <%= render 'contacts/search', form: form %>
+      <%= render 'employees/employee_selector', form: form,
+                 employee_field: :subject_expert, employee: @engagement_request.subject_expert,
+                 title: 'Select Subject Expert' %>
     </div>
   </div>
 
   <div class="row mb-2">
     <%= form.label :sponsor, class: 'col-2' %>
     <div class="col-8">
-      <%= render 'contacts/search', form: form %>
+      <%= render 'employees/employee_selector', form: form,
+                 employee_field: :sponsor, employee: @engagement_request.sponsor,
+                 title: 'Select Sponsor' %>
     </div>
   </div>
 
@@ -202,7 +208,7 @@
       <hr>
       <h5>Validations Summary</h5>
       <% if @engagement_request.validations %>
-        <ul>
+        <ul class="text-danger">
           <% @engagement_request.validations.split('|').each do |validation| %>
             <li><%= validation %></li>
           <% end %>
@@ -216,8 +222,9 @@
   <div class="row">
     <div class="col-10 pr-0">
       <div class="float-right mb-5">
-        <%= form.submit %>
+        <%= form.submit 'Save Engagement Request', class: 'btn btn-success' %>
       </div>
     </div>
   </div>
 <% end %>
+<%= render 'employees/employee_selector_popup' %>

@@ -1,0 +1,20 @@
+<div class="container-fluid">
+  <% @employees.each do |employee| %>
+    <div class="row">
+      <div class="col-2"><%= employee.first_name %></div>
+      <div class="col-2"><%= employee.last_name %></div>
+      <div class="col-3"><%= employee.email %></div>
+      <div class="col-3"><%= employee.title.name %>, <%= employee.job.name %></div>
+      <div class="col-2">
+        <%=
+          case actions
+            when :view, :view.to_s
+              link_to 'View', employee_path(employee)
+            when :select, :select.to_s
+              button_tag 'Select', { "type" => 'button', "onclick" => 'selectEmployee(' + employee.id.to_s + ');', "data-dismiss" => "modal" }
+          end
+        %>
+      </div>
+    </div>
+  <% end %>
+</div>
