@@ -2,7 +2,7 @@ class EngagementRequest < ApplicationRecord
   include EngagementRequestsHelper
 
   enum engagement_type: [ :finger_estimate, :detailed_estimate, :scheduling, :rescue ]
-  enum status: [ :validation, :submitted, :estimated, :in_progress, :complete ]
+  enum status: [ :validation, :submitted, :complete ]
   enum funding_method: [ :client, :initiative, :operations ]
   enum funding_status: [ :requested, :pending_approval, :approved, :budget ]
   enum priority: [ :high_priority, :medium_priority, :low_priority ]

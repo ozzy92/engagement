@@ -7,8 +7,53 @@
   </div>
   <div class="row">
     <div class="col-2">Status</div>
-    <div class="col-8"><%= EngagementRequest::STATUSES[@engagement_request.status] %></div>
+    <div class="col-2"><%= EngagementRequest::STATUSES[@engagement_request.status] %></div>
   </div>
+  <% if @engagement_request.submitted? %>
+    <div class="row">
+      <div class="col-8">
+        Congratulations, you have passed all validations.
+        Your request will be reviewed shortly.
+        Check back in a few minutes.
+      </div>
+    </div>
+  <% end %>
+
+  <% if @engagement_request.complete? %>
+    <div class="row">
+      <div class="col-12">
+        <hr>
+        <h5>Review Results</h5>
+      </div>
+    </div>
+    <% if @engagement_request.estimated_cost.nil? %>
+      <div class="row">
+        <div class="col-2">Review Notes</div>
+        <div class="col-4"><%= @engagement_request.estimate_breakdown %></div>
+      </div>
+    <% else %>
+      <div class="row">
+        <div class="col-12">
+          Jay has deemed your project feasible, with a small increased budget and time frame as below.
+          He will be in contact before the start of the project.
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2">Estimated Cost</div>
+        <div class="col-4"><%= number_to_currency(@engagement_request.estimated_cost) %></div>
+      </div>
+      <div class="row">
+        <div class="col-2">Estimate Breakdown</div>
+        <div class="col-4"><%= @engagement_request.estimate_breakdown %></div>
+      </div>
+      <div class="row">
+        <div class="col-2">Estimated End Date</div>
+        <div class="col-4"><%= @engagement_request.estimated_duration %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
   <div class="row">
     <div class="col-12">
       <hr>
@@ -109,7 +154,7 @@
     <div class="col-2">Train</div>
     <div class="col-8"><%= @engagement_request.train && @engagement_request.train.name %></div>
   </div>
-  <% if false # haven't got this working yet %>
+  <% if false # never got this working, and project dont enough %>
   <div class="row">
     <div class="col-2">Impacted Projects</div>
     <div class="col-8">

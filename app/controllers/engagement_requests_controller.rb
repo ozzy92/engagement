@@ -3,10 +3,14 @@ class EngagementRequestsController < ApplicationController
 
   def index
     @engagement_requests = EngagementRequest.all
+    # check estimates to update
+    @engagement_requests.each { |request| request.estimate }
   end
 
   def show
     @engagement_request = EngagementRequest.find(params[:id])
+    # check estimate to update
+    @engagement_request.estimate
   end
 
   def new

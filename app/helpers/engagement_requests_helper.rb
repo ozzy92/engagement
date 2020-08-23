@@ -106,7 +106,7 @@ module EngagementRequestsHelper
     # goal should be 1 sentence
     validate_sentences_length 'Goal', self.goal, 30, 100, 1
 
-    # description, and scope should be 5 sentenses!
+    # description, and scope should be 5 sentences!
     validate_sentences_length 'Description', self.description, 100, 500, 5
     validate_sentences_length 'Scope', self.scope, 100, 500, 5
 
@@ -221,9 +221,9 @@ module EngagementRequestsHelper
     word_count = words.size
     word_length = words.map { |word| word.length }.sum / words.size
     if word_count < min_words
-      add_validation name + ' should be at least ' + min_words + ' words'
+      add_validation name + ' should be at least ' + min_words.to_s + ' words'
     elsif word_count > max_words
-      add_validation name + ' should be fewer than ' + max_words + ' words'
+      add_validation name + ' should be fewer than ' + max_words.to_s + ' words'
     elsif word_length < 5
       add_validation name + ' should have an average word length of 5 or more'
     end
@@ -257,6 +257,40 @@ module EngagementRequestsHelper
       self.validations = message
     else
       self.validations += '|' + message
+    end
+  end
+
+  # this method creates a fake estimation on submitted requests if they are more than 5 minutes old
+  def estimate
+    if self.submitted? && (Time.now - self.updated_at) > 5 * 60
+      # re-initialize the estimates
+      self.estimated_cost = nil
+      self.estimated_duration = nil
+      # only estimate projects with a budget of $200K!  because why bother!
+      budget = self.budget_allocated
+      if budget > 200_000
+        # give them a 50/50
+        if rand > 0.5
+          # estimate the number of college grads needed during the time frame + 30%
+          # to consume the budget * 2
+          days = ((self.end_date - self.start_date) * 1.3).ceil
+          budget_per_day = budget * 2 / days
+          student_per_day = 200 * 8 # $200/hour * 8 hours
+          students = (budget_per_day / student_per_day).ceil
+          self.estimated_cost = students * student_per_day * days
+          self.estimate_breakdown = number_with_delimiter(students) + ' resources needed at $200/hour for ' +
+                                    number_with_delimiter(days) + ' days.'
+          self.estimated_duration = (self.start_date + days * 7 / 5).strftime("%B %-m %Y")
+        else
+          self.estimate_breakdown = 'Jay has reviewed your request, and does not believe the requirements are ' +
+              'feasible within the budget and time frames.  Please try submitting another request.'
+        end
+      else
+        self.estimate_breakdown = 'Jay has reviewed your request, and the allocated budget is not sufficient to meet ' +
+            'the requirements.  Please try submitting another request.'
+      end
+      self.status = :complete
+      self.save
     end
   end
 end
