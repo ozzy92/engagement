@@ -61,7 +61,7 @@ module EngagementRequestsHelper
         :risks,
         :projected_revenue,
     ].each do |field|
-      if self.attributes[field.to_s].nil?
+      if self.attributes[field.to_s].nil? || self.attributes[field.to_s].blank?
         # intentionally vague!
         add_validation 'All fields are required to perform further validations'
         return false
@@ -219,7 +219,7 @@ module EngagementRequestsHelper
   def validate_words(name, value, min_words, max_words)
     words = value.split
     word_count = words.size
-    word_length = words.map { |word| word.length }.sum / words.size
+    word_length = words.size > 0 ? words.map { |word| word.length }.sum / words.size : 0
     if word_count < min_words
       add_validation name + ' should be at least ' + min_words.to_s + ' words'
     elsif word_count > max_words

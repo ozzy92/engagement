@@ -1,4 +1,16 @@
-<%= form_with model: @department, class: 'container-fluid' do |form| %>
+<%= form_with model: @department, local: true, class: 'container-fluid' do |form| %>
+
+  <% if @department.errors.any? %>
+    <div class="row mb-2">
+      <div class="col-12">
+        <ul>
+          <% @department.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
   <div class="row mb-2">
     <%= form.label :name, class: 'col-2' %>
@@ -14,7 +26,7 @@
     <%= form.label :parent_department_id, class: 'col-2' %>
     <%= form.select :parent_department_id,
                     options_for_select(@departments.collect { |department| [ department.name, department.id ] },
-                                       params[:parent_department_id]) %>
+                                       @department.parent_department_id || params[:parent_department_id]) %>
   </div>
 
   <div class="row mb-2">

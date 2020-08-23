@@ -1,4 +1,4 @@
-import generate_cost_center from "../packs/department_cost_center";
+import generate_cost_center from "./department_cost_center";
 
 // this is set when showing the employee selector, used by selectEmployee later
 var employee_selector_field;

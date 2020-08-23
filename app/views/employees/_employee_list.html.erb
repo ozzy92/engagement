@@ -11,7 +11,7 @@
             when :view, :view.to_s
               link_to 'View', employee_path(employee)
             when :select, :select.to_s
-              button_tag 'Select', { "type" => 'button', "onclick" => 'selectEmployee(' + employee.id.to_s + ');', "data-dismiss" => "modal" }
+              button_tag 'Select', { "type" => 'button', "class" => "mb-1", "onclick" => 'selectEmployee(' + employee.id.to_s + ');', "data-dismiss" => "modal" }
           end
         %>
       </div>

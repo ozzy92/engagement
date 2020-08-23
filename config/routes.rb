@@ -6,6 +6,5 @@ Rails.application.routes.draw do
   resources :cost_centers
   resources :mail_codes
   resources :engagement_requests
-  resources :offices
   root 'home#index'
 end
