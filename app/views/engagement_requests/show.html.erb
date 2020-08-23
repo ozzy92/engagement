@@ -7,7 +7,7 @@
   </div>
   <div class="row">
     <div class="col-2">Status</div>
-    <div class="col-8"><%= @engagement_request.status %></div>
+    <div class="col-8"><%= EngagementRequest::STATUSES[@engagement_request.status] %></div>
   </div>
   <div class="row">
     <div class="col-12">
@@ -19,10 +19,16 @@
     <div class="col-2">Requester</div>
     <div class="col-8">
       <% if @engagement_request.requester %>
-        <%= @engagement_request.requester.first_name %>
-        <%= @engagement_request.requester.last_name %>,
-        <%= @engagement_request.requester.title.name %>,
-        <%= @engagement_request.requester.job.name %>
+        <div class="container">
+          <div class="row">
+            <div class="col-3">
+              <%= @engagement_request.requester.first_name %>
+              <%= @engagement_request.requester.last_name %>
+            </div>
+            <div class="col-3"><%= @engagement_request.requester.title.name %></div>
+            <div class="col-3"><%= @engagement_request.requester.job.name %></div>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
@@ -30,10 +36,16 @@
     <div class="col-2">Subject Expert</div>
     <div class="col-8">
       <% if @engagement_request.subject_expert %>
-        <%= @engagement_request.subject_expert.first_name %>
-        <%= @engagement_request.subject_expert.last_name %>,
-        <%= @engagement_request.subject_expert.title.name %>,
-        <%= @engagement_request.subject_expert.job.name %>
+        <div class="container">
+          <div class="row">
+            <div class="col-3">
+              <%= @engagement_request.subject_expert.first_name %>
+              <%= @engagement_request.subject_expert.last_name %>
+            </div>
+            <div class="col-3"><%= @engagement_request.subject_expert.title.name %></div>
+            <div class="col-3"><%= @engagement_request.subject_expert.job.name %></div>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
@@ -41,10 +53,16 @@
     <div class="col-2">Sponsor</div>
     <div class="col-8">
       <% if @engagement_request.sponsor %>
-        <%= @engagement_request.sponsor.first_name %>
-        <%= @engagement_request.sponsor.last_name %>,
-        <%= @engagement_request.sponsor.title.name %>,
-        <%= @engagement_request.sponsor.job.name %>
+        <div class="container">
+          <div class="row">
+            <div class="col-3">
+              <%= @engagement_request.sponsor.first_name %>
+              <%= @engagement_request.sponsor.last_name %>
+            </div>
+            <div class="col-3"><%= @engagement_request.sponsor.title.name %></div>
+            <div class="col-3"><%= @engagement_request.sponsor.job.name %></div>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
@@ -57,14 +75,14 @@
   </div>
   <div class="row">
     <div class="col-2">Engagement Type</div>
-    <div class="col-8"><%= @engagement_request.engagement_type %></div>
+    <div class="col-8"><%= EngagementRequest::ENGAGEMENT_TYPES[@engagement_request.engagement_type] %></div>
   </div>
   <div class="row">
     <div class="col-2">Project Name</div>
     <div class="col-8"><%= @engagement_request.project_name %></div>
   </div>
   <div class="row">
-    <div class="col-2">Project Name</div>
+    <div class="col-2">Vision</div>
     <div class="col-8"><%= @engagement_request.vision %></div>
   </div>
   <div class="row">
@@ -80,11 +98,7 @@
     <div class="col-8"><%= @engagement_request.scope %></div>
   </div>
   <div class="row">
-    <div class="col-2">Advise Required</div>
-    <div class="col-8"><%= @engagement_request.advice_required %></div>
-  </div>
-  <div class="row">
-    <div class="col-2">Advise Required</div>
+    <div class="col-2">Advice Required</div>
     <div class="col-8"><%= @engagement_request.advice_required %></div>
   </div>
   <div class="row">
@@ -95,12 +109,14 @@
     <div class="col-2">Train</div>
     <div class="col-8"><%= @engagement_request.train && @engagement_request.train.name %></div>
   </div>
+  <% if false # haven't got this working yet %>
   <div class="row">
     <div class="col-2">Impacted Projects</div>
     <div class="col-8">
       <%= @engagement_request.projects.collect { |project| project.name }.join(', ') %>
     </div>
   </div>
+  <% end %>
 
   <div class="row">
     <div class="col-12">
@@ -110,7 +126,7 @@
   </div>
   <div class="row">
     <div class="col-2">Funding Method</div>
-    <div class="col-8"><%= @engagement_request.funding_method %></div>
+    <div class="col-8"><%= EngagementRequest::FUNDING_METHODS[@engagement_request.funding_method] %></div>
   </div>
   <div class="row">
     <div class="col-2">Cost Center</div>
@@ -118,11 +134,11 @@
   </div>
   <div class="row">
     <div class="col-2">Funding Status</div>
-    <div class="col-8"><%= @engagement_request.funding_status %></div>
+    <div class="col-8"><%= EngagementRequest::FUNDING_STATUSES[@engagement_request.funding_status] %></div>
   </div>
   <div class="row">
     <div class="col-2">Budget Allocated</div>
-    <div class="col-8"><%= @engagement_request.budget_allocated %></div>
+    <div class="col-8"><%= number_to_currency(@engagement_request.budget_allocated) %></div>
   </div>
 
   <div class="row">
@@ -133,7 +149,7 @@
   </div>
   <div class="row">
     <div class="col-2">Priority</div>
-    <div class="col-8"><%= @engagement_request.priority %></div>
+    <div class="col-8"><%= EngagementRequest::PRIORITIES[@engagement_request.priority] %></div>
   </div>
   <div class="row">
     <div class="col-2">Start Date</div>
@@ -145,7 +161,7 @@
   </div>
   <div class="row">
     <div class="col-2">Risk Rating</div>
-    <div class="col-8"><%= @engagement_request.risk_rating %></div>
+    <div class="col-8"><%= EngagementRequest::RISK_RATINGS[@engagement_request.risk_rating] %></div>
   </div>
   <div class="row">
     <div class="col-2">Risks</div>
@@ -153,7 +169,7 @@
   </div>
   <div class="row">
     <div class="col-2">Projected Revenue</div>
-    <div class="col-8"><%= @engagement_request.projected_revenue %></div>
+    <div class="col-8"><%= number_to_currency(@engagement_request.projected_revenue) %></div>
   </div>
 
   <div class="row">

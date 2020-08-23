@@ -62,12 +62,10 @@
   <div class="row mb-2">
     <%= form.label :engagement_type, class: 'col-2' %>
     <%= form.select :engagement_type,
-                    options_for_select([
-                       [ 'Finger in the Air Estimate', :finger_estimate ],
-                       [ 'Detailed Project Estimate', :detailed_estimate ],
-                       [ 'Resource Scheduling', :scheduling ],
-                       [ 'Project Rescue', :rescue ],
-                    ], params[:engagement_type] || 0) %>
+                    options_for_select(EngagementRequest.engagement_types.collect do |key, value|
+                                        [ EngagementRequest::ENGAGEMENT_TYPES[key], key ]
+                                       end,
+                                       @engagement_request.engagement_type || params[:engagement_type]) %>
   </div>
 
   <div class="row mb-2">
@@ -120,12 +118,11 @@
   <div class="row mb-2">
     <%= form.label :funding_method, class: 'col-2' %>
     <%= form.select :funding_method,
-        [
-          [ 'Client Project', :client ],
-          [ 'Internal Initiative', :initiative ],
-          [ 'Operations Budget', :operations ]
-        ], { include_blank: true }
-    %>
+                    options_for_select(EngagementRequest.funding_methods.collect do |key, value|
+                                         [ EngagementRequest::FUNDING_METHODS[key], key ]
+                                       end,
+                                       @engagement_request.funding_method),
+                    { include_blank: true } %>
   </div>
 
   <div class="row mb-2">
@@ -136,13 +133,11 @@
   <div class="row mb-2">
     <%= form.label :funding_status, class: 'col-2' %>
     <%= form.select :funding_status,
-                    [
-                        [ 'Request Initiated', :requested ],
-                        [ 'Pending Approval', :pending_approval ],
-                        [ 'Fully Approved', :approved ],
-                        [ 'Budget Appropriated', :budget ]
-                    ], { include_blank: true }
-    %>
+                    options_for_select(EngagementRequest.funding_statuses.collect do |key, value|
+                                         [ EngagementRequest::FUNDING_STATUSES[key], key ]
+                                       end,
+                                       @engagement_request.funding_status),
+                    { include_blank: true } %>
   </div>
 
   <div class="row mb-2">
@@ -160,12 +155,11 @@
   <div class="row mb-2">
     <%= form.label :priority, class: 'col-2' %>
     <%= form.select :priority,
-                    [
-                        [ 'High', 0 ],
-                        [ 'Medium', 1 ],
-                        [ 'Low', 2 ]
-                    ], { include_blank: true }
-    %>
+                    options_for_select(EngagementRequest.priorities.collect do |key, value|
+                                         [ EngagementRequest::PRIORITIES[key], key ]
+                                       end,
+                                       @engagement_request.priority),
+                    { include_blank: true } %>
   </div>
 
   <div class="row mb-2">
@@ -185,12 +179,11 @@
   <div class="row mb-2">
     <%= form.label :risk_rating, class: 'col-2' %>
     <%= form.select :risk_rating,
-                    [
-                        [ 'High', 0 ],
-                        [ 'Medium', 1 ],
-                        [ 'Low', 2 ]
-                    ], { include_blank: true }
-    %>
+                    options_for_select(EngagementRequest.risk_ratings.collect do |key, value|
+                                         [ EngagementRequest::RISK_RATINGS[key], key ]
+                                       end,
+                                       @engagement_request.risk_rating),
+                    { include_blank: true } %>
   </div>
 
   <div class="row mb-2">
