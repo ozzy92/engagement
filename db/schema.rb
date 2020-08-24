@@ -10,13 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_16_212718) do
+ActiveRecord::Schema.define(version: 2020_08_16_212830) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "departments", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.string "cost_center"
-    t.integer "parent_department_id"
+    t.bigint "parent_department_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["parent_department_id"], name: "index_departments_on_parent_department_id"
@@ -27,10 +30,10 @@ ActiveRecord::Schema.define(version: 2020_08_16_212718) do
     t.string "last_name"
     t.string "email"
     t.string "password_digest"
-    t.integer "title_id", null: false
-    t.integer "job_id", null: false
-    t.integer "office_id", null: false
-    t.integer "department_id", null: false
+    t.bigint "title_id", null: false
+    t.bigint "job_id", null: false
+    t.bigint "office_id", null: false
+    t.bigint "department_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["department_id"], name: "index_employees_on_department_id"
@@ -44,17 +47,17 @@ ActiveRecord::Schema.define(version: 2020_08_16_212718) do
     t.integer "engagement_type"
     t.string "project_name"
     t.integer "status"
-    t.integer "user_id"
-    t.integer "requester_id"
-    t.integer "subject_expert_id"
-    t.integer "sponsor_id"
+    t.bigint "user_id"
+    t.bigint "requester_id"
+    t.bigint "subject_expert_id"
+    t.bigint "sponsor_id"
     t.string "vision"
     t.string "goal"
     t.string "description"
     t.string "scope"
     t.string "advice_required"
-    t.integer "program_id"
-    t.integer "train_id"
+    t.bigint "program_id"
+    t.bigint "train_id"
     t.integer "funding_method"
     t.string "cost_center"
     t.integer "funding_status"
@@ -80,8 +83,8 @@ ActiveRecord::Schema.define(version: 2020_08_16_212718) do
   end
 
   create_table "impacted_projects", force: :cascade do |t|
-    t.integer "project_id", null: false
-    t.integer "engagement_request_id", null: false
+    t.bigint "project_id", null: false
+    t.bigint "engagement_request_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["engagement_request_id"], name: "index_impacted_projects_on_engagement_request_id"
