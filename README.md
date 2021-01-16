@@ -1,6 +1,8 @@
 # Engagement Requests
 
-This is my Ruby on Rails demo app.  First application.
+This is a Ruby on Rails demo app I used to learn Ruby on Rails.
+
+See the What Is This link in upper right for a blurb on what it's about.
 
 ## Deployed
 
